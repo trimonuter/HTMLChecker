@@ -4,8 +4,16 @@ html /html
 html
 Z
 E
-html < Z html <Z
-html h < html h<
-html < Z html <Z
-html < Z html <Z
-html < Z html <Z
+html < Z html Z>lmth/<>lmth
+html h h html $
+html t t html $
+html m m html $
+html l l html $
+html > > /html $
+/html < < /html $
+/html / / /html $
+/html h h /html $
+/html t t /html $
+/html m m /html $
+/html l l /html $
+/html > > /html $
