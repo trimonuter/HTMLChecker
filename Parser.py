@@ -39,6 +39,7 @@ def FileToPDA(filename: str) -> PDA:
             Input = line[1]
             TopStack = line[2]
             Destination = line[3:]
+            Destination[1] = Destination[1][::-1]
             
             transition = {
                 Input: {

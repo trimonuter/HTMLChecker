@@ -4,7 +4,7 @@ html /html
 html
 Z
 E
-html < Z html Z>lmth/<>lmth
+html < Z html html></html>Z
 html h h html $
 html t t html $
 html m m html $

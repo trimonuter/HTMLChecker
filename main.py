@@ -6,7 +6,12 @@ P: PDA = Parser.FileToPDA('PDA.txt')
 # print(dump(P.transitions['html']['h']))
 # print(P.transitions['html']['h'])
 
-inp = input("Type string: ")
+# inp = input("Type string: ")
+htmlfile = 'tes2.html'
+with open(htmlfile, 'r') as file:
+    inp = file.read()
+    print(f'Reading {htmlfile}...')
+    print(f'Input:\n{inp}')
 acc: bool = P.processInput(inp)
 
 if acc:

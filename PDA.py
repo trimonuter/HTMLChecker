@@ -18,6 +18,8 @@ class PDA:
             return False
         elif input == '':
             return (self.stack.Top() == self.startSymbol)
+        elif input[0] in [' ', '\n']:
+            return self.processInput(input[1:])
         else:
             # Initialize state and newState
             state = self.currentState
@@ -32,10 +34,10 @@ class PDA:
                     newState = Transition[0]
                     newTop = Transition[1]
                     
-                    self.currentState = newState
                     self.stack.Pop()
                     self.stack.Push(newTop)
             
+            self.currentState = newState
             return self.processInput(input[1:])
            
 # t = {
