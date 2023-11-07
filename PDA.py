@@ -14,7 +14,9 @@ class PDA:
         self.currentStates: list[str] = [startState]
     
     def processInput(self, input: str) -> bool:
-        if input == '':
+        if len(self.currentStates) == 0:
+            return False
+        elif input == '':
             return (self.stack.Top() == self.startSymbol)
         else:
             # Clear current states
@@ -27,41 +29,33 @@ class PDA:
                 if char in self.transitions[state]:
                     top = self.stack.Top()
                     if top in self.transitions[state][char]:
-                        Transition = self.transitions[state][char][top]
-                        newState = Transition[0]
-                        newTop = Transition[1]
-                        
-                        self.currentStates.append(newState)
-                        self.stack.Pop()
-                        self.stack.Push(newTop)
+                        transitions = self.transitions[state][char][top]
+                        for Transition in transitions:
+                            newState = Transition[0]
+                            newTop = Transition[1]
+                            
+                            self.currentStates.append(newState)
+                            self.stack.Pop()
+                            self.stack.Push(newTop)
             
             return self.processInput(input[1:])
            
-t = {
-    'q': {
-        '0': {
-            'Z': ['q', 'Z0'],
-            '0': ['q', '00']
-        },
-        '1': {
-            '0': ['p', '']
-        }
-    },
-    'p': {
-        '1': {
-            '0': ['p', '']
-        },
-        '': {
-            'Z': ['p', '']
-        }
-    }
-}
-
-p: PDA = PDA(['q', 'p'], ['0', '1'], ['Z, 0'], t, 'q', 'Z')
-
-inp = input("Type string: ")
-acc: bool = p.processInput(inp)
-if acc:
-    print("String accepted")
-else:
-    print("String rejected")
+# t = {
+#     'q': {
+#         '0': {
+#             'Z': ['q', 'Z0'],
+#             '0': ['q', '00']
+#         },
+#         '1': {
+#             '0': ['p', '']
+#         }
+#     },
+#     'p': {
+#         '1': {
+#             '0': ['p', '']
+#         },
+#         '': {
+#             'Z': ['p', '']
+#         }
+#     }
+# }

@@ -1,0 +1,11 @@
+q p
+0 1
+0 Z
+q
+Z
+E
+q 0 Z q Z0
+q 0 0 q 00
+q 1 0 p $
+p 1 0 p $
+p $ Z p $
