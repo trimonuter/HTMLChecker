@@ -42,9 +42,7 @@ def FileToPDA(filename: str) -> PDA:
             
             transition = {
                 Input: {
-                    TopStack: [
-                        Destination
-                    ]
+                    TopStack: Destination
                 }
             }
             if InitialState not in t:
@@ -56,7 +54,7 @@ def FileToPDA(filename: str) -> PDA:
                     if TopStack not in t[InitialState][Input]:
                         t[InitialState][Input][TopStack] = transition[Input][TopStack]
                     else:
-                        t[InitialState][Input][TopStack].append(transition[Input][TopStack])
+                        print("Transition already exists!")
                         
             line = ADVNEWLINE(file)
             

@@ -11,32 +11,30 @@ class PDA:
         self.startSymbol: str = startSymbol
         
         self.stack: Stack = Stack(startSymbol)
-        self.currentStates: list[str] = [startState]
+        self.currentState: str = startState
     
     def processInput(self, input: str) -> bool:
-        if len(self.currentStates) == 0:
+        if self.currentState == '':
             return False
         elif input == '':
             return (self.stack.Top() == self.startSymbol)
         else:
-            # Clear current states
-            states = deepcopy(self.currentStates)
-            self.currentStates.clear()
+            # Initialize state and newState
+            state = self.currentState
+            newState = ''
             
             # Transition
             char: str = input[0]
-            for state in states:
-                if char in self.transitions[state]:
-                    top = self.stack.Top()
-                    if top in self.transitions[state][char]:
-                        transitions = self.transitions[state][char][top]
-                        for Transition in transitions:
-                            newState = Transition[0]
-                            newTop = Transition[1]
-                            
-                            self.currentStates.append(newState)
-                            self.stack.Pop()
-                            self.stack.Push(newTop)
+            if char in self.transitions[state]:
+                top = self.stack.Top()
+                if top in self.transitions[state][char]:
+                    Transition = self.transitions[state][char][top]
+                    newState = Transition[0]
+                    newTop = Transition[1]
+                    
+                    self.currentState = newState
+                    self.stack.Pop()
+                    self.stack.Push(newTop)
             
             return self.processInput(input[1:])
            
