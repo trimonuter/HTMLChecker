@@ -4,13 +4,45 @@ main html /html head /head
 main
 Z
 E
-main < Z html html></html>Z
+main < Z html html><head></head><body></body></html>Z
+# State: html
 html < < html $
 html h h html $
 html t t html $
 html m m html $
 html l l html $
-html > > /html $
+html > > head $
+# State: head
+head < < head $
+head h h head $
+head e e head $
+head a a head $
+head d d head $
+head > > /head $
+# State: /head
+/head < < /head $
+/head / / /head $
+/head h h /head $
+/head e e /head $
+/head a a /head $
+/head d d /head $
+/head > > body $
+# State: body
+body < < body $
+body b b body $
+body o o body $
+body d d body $
+body y y body $
+body > > /body $
+# State: /body
+/body < < /body $
+/body / / /body $
+/body b b /body $
+/body o o /body $
+/body d d /body $
+/body y y /body $
+/body > > /html $
+# State: /html
 /html < < /html $
 /html / / /html $
 /html h h /html $
