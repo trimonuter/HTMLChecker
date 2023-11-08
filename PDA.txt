@@ -1,10 +1,11 @@
-html /html
+main html /html head /head
 < h t m l / >
 < h t m l / >
-html
+main
 Z
 E
-html < Z html html></html>Z
+main < Z html html></html>Z
+html < < html $
 html h h html $
 html t t html $
 html m m html $

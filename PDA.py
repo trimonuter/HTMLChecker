@@ -18,7 +18,9 @@ class PDA:
             return False
         elif input == '':
             return (self.stack.Top() == self.startSymbol)
-        elif input[0] in [' ', '\n']:
+        # elif input[0] in [' ', '\n']:
+        #     return self.processInput(input[1:])
+        elif input[0] != '<' and self.stack.Top() == '<':
             return self.processInput(input[1:])
         else:
             # Initialize state and newState
