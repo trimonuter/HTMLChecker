@@ -4,7 +4,7 @@ from yaml import dump
 from PDA import PDA
 
 def ADVNEWLINE(file: TextIO) -> list[str]:
-    return [x.replace('$', '') for x in file.readline().strip().split(' ')]
+    return [x.replace('$', '').replace('W', ' ') for x in file.readline().strip().split(' ')]
 
 def FileToPDA(filename: str) -> PDA:
     with open(filename) as file:

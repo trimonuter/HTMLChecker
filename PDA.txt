@@ -59,13 +59,44 @@ body > > body $
 # Transition: body --> /bodyTemp
 body < < body $
 body / / /bodyTemp $
+# PDA Logic: Global Attributes
+body W > body G>
+# ID
+body i G body d="A
+body d d body $
+body = = body $
+body " " body $
+body " A body $
+body % A body A
+# Class
+body c G body lass="A
+body c G body lass="A
+body l l body $
+body a a body $
+body s s body $
+# Style
+body s G body tyle="A
+body s G body tyle="A
+body t t body $
+body y y body $
+body l l body $
+body e e body $
 # PDA Logic: <p>
 body p / body ></p></
-body > > body $
-body < < body $
-body / / body $
-body p p body $
-body > > body $
+# PDA Logic: <h1>, <h2>, ..., <h6>
+body h / body h
+body 1 h body ></h1></
+body 1 1 body $
+body 2 h body ></h2></
+body 2 2 body $
+body 3 h body ></h3></
+body 3 3 body $
+body 4 h body ></h4></
+body 4 4 body $
+body 5 h body ></h5></
+body 5 5 body $
+body 6 h body ></h6></
+body 6 6 body $
 # ========================= State: /bodyTemp =========================
 /bodyTemp b b /bodyTemp $
 /bodyTemp o o /body $

@@ -38,16 +38,34 @@ class PDA:
                     
                     self.stack.Pop()
                     self.stack.Push(newTop)
+                else:
+                    if '%' in self.transitions[state]:
+                        top = self.stack.Top()
+                        if top in self.transitions[state]['%']:
+                            Transition = self.transitions[state]['%'][top]
+                            newState = Transition[0]
+                            newTop = Transition[1]
+                            
+                            self.stack.Pop()
+                            self.stack.Push(newTop)
             else:
                 if '%' in self.transitions[state]:
-                    if '%' in self.transitions[state]['%']:
+                    top = self.stack.Top()
+                    if top in self.transitions[state]['%']:
+                        Transition = self.transitions[state]['%'][top]
+                        newState = Transition[0]
+                        newTop = Transition[1]
+                        
+                        self.stack.Pop()
+                        self.stack.Push(newTop)
+                    elif '%' in self.transitions[state]['%']:
                         Transition = self.transitions[state]['%']['%']
                         newState = Transition[0]
                         newTop = Transition[1]
                         
                         self.stack.Pop()
                         self.stack.Push(newTop)
-            
+                    
             self.currentState = newState
             return self.processInput(input[1:])
            
