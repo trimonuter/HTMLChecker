@@ -55,7 +55,30 @@ body b b body $
 body o o body $
 body d d body $
 body y y body $
-body > > /body $
+body > > body $
+# Transition: body --> /bodyTemp
+body < < body $
+body / / /bodyTemp $
+# PDA Logic: <p>
+body p / body ></p></
+body > > body $
+body < < body $
+body / / body $
+body p p body $
+body > > body $
+# ========================= State: /bodyTemp =========================
+/bodyTemp b b /bodyTemp $
+/bodyTemp o o /body $
+/bodyTemp % % body $
+# ========================= State: p =========================
+# p < < p $
+# p p p p $
+# p > > /p $
+# ========================= State: /p =========================
+# /p < < /p $
+# /p / / /p $
+# /p p p /p $
+# /p > > body $
 # ========================= State: /body =========================
 /body < < /body $
 /body / / /body $

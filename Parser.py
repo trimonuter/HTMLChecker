@@ -35,7 +35,7 @@ def FileToPDA(filename: str) -> PDA:
         line = ADVNEWLINE(file)
         t = {}
         while line[0] != '':
-            if line[0] == '#':
+            while line[0] == '#':
                 line = ADVNEWLINE(file)
             InitialState = line[0]
             Input = line[1]
