@@ -97,6 +97,9 @@ body 5 h body ></h5></
 body 5 5 body $
 body 6 h body ></h6></
 body 6 6 body $
+# Transition: body --> table
+body < < body $
+body t / table able></table></
 # ========================= State: /bodyTemp =========================
 /bodyTemp b b /bodyTemp $
 /bodyTemp o o /body $
@@ -110,6 +113,151 @@ body 6 6 body $
 # /p / / /p $
 # /p p p /p $
 # /p > > body $
+# ========================= State: table =========================
+table < < table $
+table t t table $
+table a a table $
+table b b table $
+table l l table $
+table e e table $
+table > > /table $
+# PDA Logic: Global Attributes
+table W > table G>
+# ID
+table i G table d="A
+table d d table $
+table = = table $
+table " " table $
+table " A table $
+table % A table A
+# Class
+table c G table lass="A
+table c G table lass="A
+table l l table $
+table a a table $
+table s s table $
+# Style
+table s G table tyle="A
+table s G table tyle="A
+table t t table $
+table y y table $
+table l l table $
+table e e table $
+# ========================= State: /table =========================
+/table < < /table $
+/table / / /table $
+/table t t /table $
+/table a a /table $
+/table b b /table $
+/table l l /table $
+/table e e /table $
+/table > > body $
+# Transition: /table --> tr
+/table t / tr r></tr></
+# ========================= State: tr =========================
+tr < < tr $
+tr t t tr $
+tr r r tr $
+tr > > /tr $
+# PDA Logic: Global Attributes
+tr W > tr G>
+# ID
+tr i G tr d="A
+tr d d tr $
+tr = = tr $
+tr " " tr $
+tr " A tr $
+tr % A tr A
+# Class
+tr c G tr lass="A
+tr c G tr lass="A
+tr l l tr $
+tr a a tr $
+tr s s tr $
+# Style
+tr s G tr tyle="A
+tr s G tr tyle="A
+tr t t tr $
+tr y y tr $
+tr l l tr $
+tr e e tr $
+# ========================= State: /tr =========================
+/tr < < /tr $
+/tr / / /tr $
+/tr t t /tr $
+/tr r r /tr $
+/tr > > /table $
+# Transition: /tr --> td
+/tr t / /tr /
+/tr d / td ></td></
+# Transition: /tr --> th
+/tr h / th ></th></
+# ========================= State: td =========================
+td < < td $
+td t t td $
+td d d td $
+td > > /td $
+# PDA Logic: Global Attributes
+td W > td G>
+# ID
+td i G td d="A
+td d d td $
+td = = td $
+td " " td $
+td " A td $
+td % A td A
+# Class
+td c G td lass="A
+td c G td lass="A
+td l l td $
+td a a td $
+td s s td $
+# Style
+td s G td tyle="A
+td s G td tyle="A
+td t t td $
+td y y td $
+td l l td $
+td e e td $
+# ========================= State: /td =========================
+/td < < /td $
+/td / / /td $
+/td t t /td $
+/td d d /td $
+/td > > /tr $
+# ========================= State: th =========================
+th < < th $
+th t t th $
+th h h th $
+th > > /th $
+# PDA Logic: Global Attributes
+th W > th G>
+# ID
+th i G th d="A
+th d d th $
+th = = th $
+th " " th $
+th " A th $
+th % A th A
+# Class
+th c G th lass="A
+th c G th lass="A
+th l l th $
+th a a th $
+th s s th $
+# Style
+th s G th tyle="A
+th s G th tyle="A
+th t t th $
+th y y th $
+th l l th $
+th e e th $
+# ========================= State: /th =========================
+/th < < /th $
+/th / / /th $
+/th t t /th $
+/th h h /th $
+/th > > /tr $
 # ========================= State: /body =========================
 /body < < /body $
 /body / / /body $
