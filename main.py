@@ -7,7 +7,7 @@ P: PDA = Parser.FileToPDA('PDA.txt')
 # print(P.transitions['html']['h'])
 
 # inp = input("Type string: ")
-htmlfile = 'tes3.html'
+htmlfile = 'tes4.html'
 with open(htmlfile, 'r') as file:
     inp = file.read()
     print(f'Reading {htmlfile}...')

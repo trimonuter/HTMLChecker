@@ -97,6 +97,22 @@ body 5 h body ></h5></
 body 5 5 body $
 body 6 h body ></h6></
 body 6 6 body $
+# PDA Logic: <hr>
+body r h body ></
+# PDA Logic: <br>
+body < < body $
+body b / body r></
+body r r body $
+# Transition: body --> a
+body < < body $
+body a / a ></a></
+# Transition: body --> img
+body < < body $
+body i / img mgWsrc="A></
+body i / img mgWsrc="A></
+# Transition: body --> form
+body < < body $
+body f / form orm></form></
 # Transition: body --> table
 body < < body $
 body t / table able></table></
@@ -113,6 +129,163 @@ body t / table able></table></
 # /p / / /p $
 # /p p p /p $
 # /p > > body $
+# ========================= State: a =========================
+a < < a $
+a a a a $
+# PDA Logic: Additional Attributes
+a W > a G>
+# Href
+a h G a ref="A
+a r r a $
+a e e a $
+a f f a $
+a = = a $
+a " " a $
+a " A a $
+# PDA Logic: Global Attributes
+# ID
+a i G a d="A
+a d d a $
+a = = a $
+a " " a $
+a " A a $
+a % A a A
+# Class
+a c G a lass="A
+a c G a lass="A
+a l l a $
+a a a a $
+a s s a $
+# Style
+a s G a tyle="A
+a s G a tyle="A
+a t t a $
+a y y a $
+a l l a $
+a e e a $
+# Transition: a --> /a
+a > > /a $
+# ========================= State: /a =========================
+/a < < /a $
+/a / / /a $
+/a a a /a $
+/a > > body $
+# ========================= State: img =========================
+img < < img $
+img i i img $
+img m m img $
+img g g img $
+# PDA Logic: Additional Attributes
+# Src
+img W W img $
+img s s img $
+img r r img $
+img c c img $
+img = = img $
+img " " img $
+img " A img $
+img " A img $
+img % A img A
+# PDA Logic: Optional Attributes
+img W > img G>
+# Alt
+img a G img lt="A
+img a G img lt="A
+img l l img $
+img t t img $
+# PDA Logic: Global Attributes
+# ID
+img i G img d="A
+img d d img $
+img = = img $
+img " " img $
+img " A img $
+img % A img A
+# Class
+img c G img lass="A
+img c G img lass="A
+img l l img $
+img a a img $
+img s s img $
+# Style
+img s G img tyle="A
+img s G img tyle="A
+img t t img $
+img y y img $
+img l l img $
+img e e img $
+# Transition: img --> body
+img > > body $
+# ========================= State: form =========================
+form < < form $
+form f f form $
+form o o form $
+form r r form $
+form m m form $
+# PDA Logic: Additional Attributes
+form W > form G>
+# Action
+form a G form ction="A
+form c c form $
+form t t form $
+form i i form $
+form o o form $
+form n n form $
+form = = form $
+form " " form $
+form " A form $
+form % A form A
+# Method
+form m G form ethod="M
+form e e form $
+form t t form $
+form h h form $
+form o o form $
+form d d form $
+form = = form $
+form " " form $
+# Method: get
+form g M form et"
+form e e form $
+form t t form $
+# Method: post
+form p M form ost"
+form p M form ost"
+form o o form $
+form s s form $
+form t t form $
+# PDA Logic: Global Attributes
+form W > form G>
+# ID
+form i G form d="A
+form d d form $
+form = = form $
+form " " form $
+form " A form $
+form % A form A
+# Class
+form c G form lass="A
+form c G form lass="A
+form l l form $
+form a a form $
+form s s form $
+# Style
+form s G form tyle="A
+form s G form tyle="A
+form t t form $
+form y y form $
+form l l form $
+form e e form $
+# Transition: form --> /form
+form > > /form $
+# ========================= State: /form =========================
+/form < < /form $
+/form / / /form $
+/form f f /form $
+/form o o /form $
+/form r r /form $
+/form m m /form $
+/form > > body $
 # ========================= State: table =========================
 table < < table $
 table t t table $

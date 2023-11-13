@@ -56,8 +56,6 @@ def FileToPDA(filename: str) -> PDA:
                 else:
                     if TopStack not in t[InitialState][Input]:
                         t[InitialState][Input][TopStack] = transition[Input][TopStack]
-                    else:
-                        print("Transition already exists!")
                         
             line = ADVNEWLINE(file)
             
