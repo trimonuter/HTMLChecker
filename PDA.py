@@ -1,4 +1,4 @@
-from stack import Stack
+from Stack import Stack
 from copy import deepcopy
 
 class PDA:
