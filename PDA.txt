@@ -105,7 +105,7 @@ body b / body r></
 body r r body $
 # Transition: body --> a
 body < < body $
-body a / a ></a></
+body a /  a ></a></
 # Transition: body --> img
 body < < body $
 body i / img mgWsrc="A></
@@ -116,6 +116,29 @@ body f / form orm></form></
 # Transition: body --> table
 body < < body $
 body t / table able></table></
+# PDA Logic: <div>
+body < < body $
+body d / body iv></div></
+body i i body $
+body v v body $
+# PDA Logic: <em>
+body < < body $
+body e / body m></em></
+body e e body $
+body m m body $
+# PDA Logic: <strong>
+body < < body $
+body s / body $
+body t b body rong></strong></b
+body r r body $
+body o o body $
+body n n body $
+body g g body $
+# PDA Logic: <small>
+body s / body $
+body m b body all></small></b
+body a a body $
+body l l body $
 # ========================= State: /bodyTemp =========================
 /bodyTemp b b /bodyTemp $
 /bodyTemp o o /body $
