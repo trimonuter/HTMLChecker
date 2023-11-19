@@ -101,8 +101,10 @@ body 6 6 body $
 body r h body ></
 # PDA Logic: <br>
 body < < body $
-body b / body r></
-body r r body $
+body b / body $
+body r b body ></b
+# Transition: body --> button
+body u b button tton></button></b
 # Transition: body --> a
 body < < body $
 body a /  a ></a></
@@ -239,6 +241,75 @@ img l l img $
 img e e img $
 # Transition: img --> body
 img > > body $
+# ========================= State: button =========================
+button < < button $
+button b b button $
+button u u button $
+button t t button $
+button o o button $
+button n n button $
+# PDA Logic: Additional Attributes
+button W > button G>
+# Type
+button t G button ype="T
+button y y button $
+button p p button $
+button e e button $
+button = = button $
+button " " button $
+# Type: submit
+button s T button ubmit"
+button u u button $
+button b b button $
+button m m button $
+button i i button $
+button t t button $
+# Type: reset
+button r T button eset"
+button r T button eset"
+button e e button $
+button s s button $
+button t t button $
+# Type: button
+button b T button utton"
+button b T button utton"
+button u u button $
+button t t button $
+button o o button $
+button n n button $
+# PDA Logic: Global Attributes
+button W > button G>
+# ID
+button i G button d="A
+button d d button $
+button = = button $
+button " " button $
+button " A button $
+button % A button A
+# Class
+button c G button lass="A
+button c G button lass="A
+button l l button $
+button a a button $
+button s s button $
+# Style
+button s G button tyle="A
+button s G button tyle="A
+button t t button $
+button y y button $
+button l l button $
+button e e button $
+# Transition: button --> /button
+button > > /button $
+# ========================= State: /button =========================
+/button < < /button $
+/button / / /button $
+/button b b /button $
+/button u u /button $
+/button t t /button $
+/button o o /button $
+/button n n /button $
+/button > > body $
 # ========================= State: form =========================
 form < < form $
 form f f form $
