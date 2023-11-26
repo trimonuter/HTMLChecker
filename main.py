@@ -2,8 +2,8 @@ import Parser
 from PDA import PDA
 
 P: PDA = Parser.FileToPDA('PDA.txt')
-htmlfile = 'tesAllKomentar.html'
-# htmlfile = 'debug.html'
+# htmlfile = 'tesAllKomentar.html'
+htmlfile = 'debug.html'
 with open(htmlfile, 'r') as file:
     inp = file.read()
     print(f'Reading {htmlfile}...')

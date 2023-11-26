@@ -1,6 +1,6 @@
 main html /html head /head
-< h t m l / >
-< h t m l / >
+a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 < > ! - % / = W
+a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 < > $ ! - % / = Z W C M B G A F T
 main
 Z
 E
@@ -652,16 +652,16 @@ form o o form $
 form d d form $
 form = = form $
 form " " form $
-# Method: get
-form g M form et"
-form e e form $
-form t t form $
+# Method: GET
+form G M form ET"
+form E E form $
+form T T form $
 # Method: post
-form p M form ost"
-form p M form ost"
-form o o form $
-form s s form $
-form t t form $
+form P M form OST"
+form P M form OST"
+form O O form $
+form S S form $
+form T T form $
 # PDA Logic: Global Attributes
 form W > form G>
 # ID
