@@ -4,14 +4,61 @@ main html /html head /head
 main
 Z
 E
-main < Z html html><head></head><body></body></html>Z
 # ========================= State: html =========================
-html < < html $
-html h h html $
+main < Z main Z
+main h Z html tml><head></head><body></body></html>Z
+# Handling: Whitespace
+main W Z main Z
+# Handling: Comment
+main ! Z main --CMBZ
+main - - main $
+main - C main $
+main - M main $
+main % C main C
+main > B main $
+# Handling: Reset Comment
+main % M main CM
+main % B main CMB
+# ========================= State: html =========================
 html t t html $
 html m m html $
 html l l html $
-html > > head $
+html > > html $
+# PDA Logic: Global Attributes
+html W > html G>
+# ID
+html i G html d="A
+html d d html $
+html = = html $
+html " " html $
+html " A html $
+html % A html A
+# Class
+html c G html lass="A
+html c G html lass="A
+html l l html $
+html a a html $
+html s s html $
+# Style
+html s G html tyle="A
+html s G html tyle="A
+html t t html $
+html y y html $
+html l l html $
+html e e html $
+# Handling: Comment
+html ! h html --CMB<h
+html - - html $
+html - C html $
+html - M html $
+html % C html C
+html > B html $
+# Handling: Reset Comment
+html % M html CM
+html % B html CMB
+# Transition: html --> head
+html < < html $
+html h h head $
 # ========================= State: head =========================
 head < < head $
 head h h head $
@@ -19,11 +66,183 @@ head e e head $
 head a a head $
 head d d head $
 head > > head $
-# Transition: head --> /head
-head < < head $
-head / / /head $
+# PDA Logic: Global Attributes
+head W > head G>
+# ID
+head i G head d="A
+head d d head $
+head = = head $
+head " " head $
+head " A head $
+head % A head A
+# Class
+head c G head lass="A
+head c G head lass="A
+head l l head $
+head a a head $
+head s s head $
+# Style
+head s G head tyle="A
+head s G head tyle="A
+head t t head $
+head y y head $
+head l l head $
+head e e head $
+# Handling: Comment
+head ! / head --CMB</
+head - - head $
+head - C head $
+head - M head $
+head % C head C
+head > B head $
+# Handling: Reset Comment
+head % M head CM
+head % B head CMB
 # Transition: head --> title
 head t / title itle></title></
+# Transition: head --> link
+head l / link inkW></
+# Transition: head --> script
+head s / script cript></script></
+# Transition: head --> /head
+head / / /head $
+# ========================= State: link =========================
+link < < link $
+link i i link $
+link n n link $
+link k k link $
+# PDA Logic: Additional Attributes
+# Rel
+link W W link rel="A
+link W W link rel="A
+link r r link $
+link e e link $
+link l l link $
+link = = link $
+link " " link $
+link " A link $
+link " A link $
+link % A link A
+# PDA Logic: Optional Attributes
+link W > link G>
+# Alt
+link h G link ref="A
+link h G link ref="A
+link r r link $
+link e e link $
+link f f link $
+# PDA Logic: Global Attributes
+# ID
+link i G link d="A
+link d d link $
+link = = link $
+link " " link $
+link " A link $
+link % A link A
+# Class
+link c G link lass="A
+link c G link lass="A
+link l l link $
+link a a link $
+link s s link $
+# Style
+link s G link tyle="A
+link s G link tyle="A
+link t t link $
+link y y link $
+link l l link $
+link e e link $
+# Transition: link --> head
+link > > head $
+# ========================= State: script =========================
+script < < script $
+script s s script $
+script c c script $
+script r r script $
+script i i script $
+script p p script $
+script t t script $
+# PDA Logic: Optional Attributes
+script W > script G>
+# Src
+script s G script rc="A
+script s G script rc="A
+script r r script $
+script c c script $
+script = = script $
+script " " script $
+script " A script $
+script " A script $
+script % A script A
+# PDA Logic: Global Attributes
+# ID
+script i G script d="A
+script d d script $
+script = = script $
+script " " script $
+script " A script $
+script % A script A
+# Class
+script c G script lass="A
+script c G script lass="A
+script l l script $
+script a a script $
+script s s script $
+# Style
+script s G script tyle="A
+script s G script tyle="A
+script t t script $
+script y y script $
+script l l script $
+script e e script $
+# Logic: <em>
+script e / script m></em></
+script m m script $
+# Logic: <b>
+script b / script ></b></
+# Logic: <abbr>
+script a / script bbr></abbr></
+script b b script $
+script r r script $
+# Logic: <strong>
+script s / script $
+script t t script $
+script r i script ong></strong></ti
+script o o script $
+script n n script $
+script g g script $
+# Logic: <small>
+script m t script all></small></t
+script a a script $
+script l l script $
+# Handling: Comment
+script ! / script --CMB</
+script - - script $
+script - C script $
+script - M script $
+script % C script C
+script > B script $
+# Handling: Reset Comment
+script % M script CM
+script % B script CMB
+# Transition: script --> /scriptTemp
+script > > script $
+script / / /scriptTemp $
+# ========================= State: /scriptTemp =========================
+/scriptTemp s s /scriptTemp $
+/scriptTemp c c /script $
+/scriptTemp % % script $
+# ========================= State: /script =========================
+/script < < /script $
+/script / / /script $
+/script s s /script $
+/script c c /script $
+/script r r /script $
+/script i i /script $
+/script p p /script $
+/script t t /script $
+# Transition: /script --> head
+/script > > head $
 # ========================= State: title =========================
 title < < title $
 title t t title $
@@ -31,7 +250,64 @@ title i i title $
 title t t title $
 title l l title $
 title e e title $
-title > > /title $
+# PDA Logic: Global Attributes
+title W > title G>
+# ID
+title i G title d="A
+title d d title $
+title = = title $
+title " " title $
+title " A title $
+title % A title A
+# Class
+title c G title lass="A
+title c G title lass="A
+title l l title $
+title a a title $
+title s s title $
+# Style
+title s G title tyle="A
+title s G title tyle="A
+title t t title $
+title y y title $
+title l l title $
+title e e title $
+# Logic: <em>
+title e / title m></em></
+title m m title $
+# Logic: <b>
+title b / title ></b></
+# Logic: <abbr>
+title a / title bbr></abbr></
+title b b title $
+title r r title $
+# Logic: <strong>
+title s / title $
+title t t title $
+title r i title ong></strong></ti
+title o o title $
+title n n title $
+title g g title $
+# Logic: <small>
+title m t title all></small></t
+title a a title $
+title l l title $
+# Handling: Comment
+title ! / title --CMB</
+title - - title $
+title - C title $
+title - M title $
+title % C title C
+title > B title $
+# Handling: Reset Comment
+title % M title CM
+title % B title CMB
+# Transition: title --> /titleTemp
+title > > title $
+title / / /titleTemp $
+# ========================= State: /titleTemp =========================
+/titleTemp t t /title $
+/titleTemp % % title $
 # ========================= State: /title =========================
 /title < < /title $
 /title / / /title $
@@ -40,7 +316,8 @@ title > > /title $
 /title t t /title $
 /title l l /title $
 /title e e /title $
-/title > > /head $
+# Transition: /title --> head
+/title > > head $
 # ========================= State: /head =========================
 /head < < /head $
 /head / / /head $
@@ -48,6 +325,17 @@ title > > /title $
 /head e e /head $
 /head a a /head $
 /head d d /head $
+# Handling: Comment
+/head ! / /head --CMB</
+/head - - /head $
+/head - C /head $
+/head - M /head $
+/head % C /head C
+/head > B /head $
+# Handling: Reset Comment
+/head % M /head CM
+/head % B /head CMB
+# Transition: /head --> body
 /head > > body $
 # ========================= State: body =========================
 body < < body $
@@ -101,28 +389,34 @@ body 6 6 body $
 body r h body ></
 # PDA Logic: <br>
 body < < body $
-body b / body $
-body r b body ></b
-# Transition: body --> button
-body u b button tton></button></b
+body b / format F
 # Transition: body --> a
 body < < body $
-body a /  a ></a></
+body a / format A
 # Transition: body --> img
 body < < body $
-body i / img mgWsrc="A></
-body i / img mgWsrc="A></
+body i / format I
 # Transition: body --> form
 body < < body $
 body f / form orm></form></
+# Transition: body --> input
+body < < body $
+body i / format I
 # Transition: body --> table
 body < < body $
 body t / table able></table></
+# Transition: body --> link
+body < < body $
+body l / linkBody inkW></
 # PDA Logic: <div>
 body < < body $
 body d / body iv></div></
 body i i body $
 body v v body $
+# PDA Logic: <b>
+body b / format F
+# PDA Logic: <abbr>
+body a / format F
 # PDA Logic: <em>
 body < < body $
 body e / body m></em></
@@ -130,30 +424,59 @@ body e e body $
 body m m body $
 # PDA Logic: <strong>
 body < < body $
-body s / body $
-body t b body rong></strong></b
+body s / format F
 body r r body $
 body o o body $
 body n n body $
 body g g body $
 # PDA Logic: <small>
-body s / body $
-body m b body all></small></b
+body s / format F
 body a a body $
 body l l body $
+# PDA Logic: </button>
+body b b body $
+body u u body $
+body t t body $
+body o o body $
+body n n body $
+# Handling: Comment
+body ! / body --CMB</
+body ! b body --CMB<b
+body - - body $
+body - C body $
+body - M body $
+body % C body C
+body > B body $
+# Handling: Reset Comment
+body % M body CM
+body % B body CMB
+# ========================= State: format =========================
+# Logic: <a>
+format > A body </a></
+format W A a G></a></
+# Logic: <abbr>
+format b A body br></abbr></
+# Logic: <b>
+format > F body </b></
+# Logic: <br>
+format r F body ></
+# Logic: <button>
+format u F button tton></button></
+# Logic: <strong>
+format t F body rong></strong></
+# Logic: <small>
+format m F body all></small></
+# Logic: <script>
+format c F scriptBody ript></script></
+# Logic: <img>
+format m I img gWsrc="A></
+format m I img gWsrc="A></
+# Logic: <input>
+format n I input put></
 # ========================= State: /bodyTemp =========================
 /bodyTemp b b /bodyTemp $
 /bodyTemp o o /body $
 /bodyTemp % % body $
-# ========================= State: p =========================
-# p < < p $
-# p p p p $
-# p > > /p $
-# ========================= State: /p =========================
-# /p < < /p $
-# /p / / /p $
-# /p p p /p $
-# /p > > body $
 # ========================= State: a =========================
 a < < a $
 a a a a $
@@ -188,13 +511,13 @@ a t t a $
 a y y a $
 a l l a $
 a e e a $
-# Transition: a --> /a
-a > > /a $
+# Transition: a --> body
+a > > body $
 # ========================= State: /a =========================
-/a < < /a $
-/a / / /a $
-/a a a /a $
-/a > > body $
+# /a < < /a $
+# /a / / /a $
+# /a a a /a $
+# /a > > body $
 # ========================= State: img =========================
 img < < img $
 img i i img $
@@ -299,17 +622,8 @@ button t t button $
 button y y button $
 button l l button $
 button e e button $
-# Transition: button --> /button
-button > > /button $
-# ========================= State: /button =========================
-/button < < /button $
-/button / / /button $
-/button b b /button $
-/button u u /button $
-/button t t /button $
-/button o o /button $
-/button n n /button $
-/button > > body $
+# Transition: button --> body
+button > > body $
 # ========================= State: form =========================
 form < < form $
 form f f form $
@@ -371,15 +685,93 @@ form y y form $
 form l l form $
 form e e form $
 # Transition: form --> /form
-form > > /form $
+form > > body $
 # ========================= State: /form =========================
-/form < < /form $
-/form / / /form $
-/form f f /form $
-/form o o /form $
-/form r r /form $
-/form m m /form $
-/form > > body $
+# /form < < /form $
+# /form / / /form $
+# /form f f /form $
+# /form o o /form $
+# /form r r /form $
+# /form m m /form $
+# /form > > body $
+# ========================= State: input =========================
+input < < input $
+input i i input $
+input n n input $
+input p p input $
+input u u input $
+input t t input $
+# PDA Logic: Optional Attributes
+input W > input G>
+# Type
+input t G input ype="T
+input t G input ype="T
+input y y input $
+input p p input $
+input e e input $
+# Type: text
+input t T input ext"
+input t T input ext"
+input e e input $
+input x x input $
+input t t input $
+# Type: password
+input p T input assword"
+input p T input assword"
+input a a input $
+input s s input $
+input w w input $
+input o o input $
+input r r input $
+input d d input $
+# Type: email
+input e T input mail"
+input e T input mail"
+input m m input $
+input a a input $
+input i i input $
+input l l input $
+# Type: number
+input n T input umber"
+input n T input umber"
+input u u input $
+input m m input $
+input b b input $
+input e e input $
+input r r input $
+# Type: checkbox
+input c T input heckbox"
+input c T input heckbox"
+input h h input $
+input e e input $
+input c c input $
+input k k input $
+input b b input $
+input o o input $
+input x x input $
+# PDA Logic: Global Attributes
+# ID
+input i G input d="A
+input d d input $
+input = = input $
+input " " input $
+input " A input $
+input % A input A
+# Class
+input c G input lass="A
+input c G input lass="A
+input l l input $
+input a a input $
+input s s input $
+# Style
+input s G input tyle="A
+input s G input tyle="A
+input t t input $
+input y y input $
+input l l input $
+input e e input $
+# Transition: input --> body
+input > > body $
 # ========================= State: table =========================
 table < < table $
 table t t table $
@@ -387,7 +779,6 @@ table a a table $
 table b b table $
 table l l table $
 table e e table $
-table > > /table $
 # PDA Logic: Global Attributes
 table W > table G>
 # ID
@@ -410,6 +801,8 @@ table t t table $
 table y y table $
 table l l table $
 table e e table $
+# Transition: table --> /table
+table > > /table $
 # ========================= State: /table =========================
 /table < < /table $
 /table / / /table $
@@ -421,6 +814,16 @@ table e e table $
 /table > > body $
 # Transition: /table --> tr
 /table t / tr r></tr></
+# Handling: Comment
+/table ! / /table --CMB</
+/table - - /table $
+/table - C /table $
+/table - M /table $
+/table % C /table C
+/table > B /table $
+# Handling: Reset Comment
+/table % M /table CM
+/table % B /table CMB
 # ========================= State: tr =========================
 tr < < tr $
 tr t t tr $
@@ -459,11 +862,20 @@ tr e e tr $
 /tr d / td ></td></
 # Transition: /tr --> th
 /tr h / th ></th></
+# Handling: Comment
+/tr ! / /tr --CMB</
+/tr - - /tr $
+/tr - C /tr $
+/tr - M /tr $
+/tr % C /tr C
+/tr > B /tr $
+# Handling: Reset Comment
+/tr % M /tr CM
+/tr % B /tr CMB
 # ========================= State: td =========================
 td < < td $
 td t t td $
 td d d td $
-td > > /td $
 # PDA Logic: Global Attributes
 td W > td G>
 # ID
@@ -486,6 +898,42 @@ td t t td $
 td y y td $
 td l l td $
 td e e td $
+# Logic: <em>
+td e / td m></em></
+td m m td $
+# Logic: <b>
+td b / td ></b></
+# Logic: <abbr>
+td a / td bbr></abbr></
+td b b td $
+td r r td $
+# Logic: <strong>
+td s / td $
+td t t td $
+td r d td ong></strong></td
+td o o td $
+td n n td $
+td g g td $
+# Logic: <small>
+td m t td all></small></t
+td a a td $
+td l l td $
+# Handling: Comment
+td ! / td --CMB</
+td - - td $
+td - C td $
+td - M td $
+td % C td C
+td > B td $
+# Handling: Reset Comment
+td % M td CM
+td % B td CMB
+# Transition: td --> /td
+td > > td $
+td / / /tdTemp $
+# ========================= State: /tdTemp =========================
+/tdTemp t t /td $
+/tdTemp % % td $
 # ========================= State: /td =========================
 /td < < /td $
 /td / / /td $
@@ -496,7 +944,7 @@ td e e td $
 th < < th $
 th t t th $
 th h h th $
-th > > /th $
+th > > th $
 # PDA Logic: Global Attributes
 th W > th G>
 # ID
@@ -519,25 +967,219 @@ th t t th $
 th y y th $
 th l l th $
 th e e th $
+# Logic: <em>
+th e / th m></em></
+th m m th $
+# Logic: <b>
+th b / th ></b></
+# Logic: <abbr>
+th a / th bbr></abbr></
+th b b th $
+th r r th $
+# Logic: <strong>
+th s / th $
+th t t th $
+th r h th ong></strong></th
+th o o th $
+th n n th $
+th g g th $
+# Logic: <small>
+th m t th all></small></t
+th a a th $
+th l l th $
+# Handling: Comment
+th ! / th --CMB</
+th - - th $
+th - C th $
+th - M th $
+th % C th C
+th > B th $
+# Handling: Reset Comment
+th % M th CM
+th % B th CMB
+# Transition: th --> /th
+th > > th $
+th / / /thTemp $
+# ========================= State: /thTemp =========================
+/thTemp t t /th $
+/thTemp % % th $
 # ========================= State: /th =========================
 /th < < /th $
 /th / / /th $
 /th t t /th $
 /th h h /th $
 /th > > /tr $
+# ========================= State: linkBody =========================
+linkBody < < linkBody $
+linkBody i i linkBody $
+linkBody n n linkBody $
+linkBody k k linkBody $
+# PDA Logic: Additional Attributes
+# Rel
+linkBody W W linkBody rel="A
+linkBody W W linkBody rel="A
+linkBody r r linkBody $
+linkBody e e linkBody $
+linkBody l l linkBody $
+linkBody = = linkBody $
+linkBody " " linkBody $
+linkBody " A linkBody $
+linkBody " A linkBody $
+linkBody % A linkBody A
+# PDA Logic: Optional Attributes
+linkBody W > linkBody G>
+# Alt
+linkBody h G linkBody ref="A
+linkBody h G linkBody ref="A
+linkBody r r linkBody $
+linkBody e e linkBody $
+linkBody f f linkBody $
+# PDA Logic: Global Attributes
+# ID
+linkBody i G linkBody d="A
+linkBody d d linkBody $
+linkBody = = linkBody $
+linkBody " " linkBody $
+linkBody " A linkBody $
+linkBody % A linkBody A
+# Class
+linkBody c G linkBody lass="A
+linkBody c G linkBody lass="A
+linkBody l l linkBody $
+linkBody a a linkBody $
+linkBody s s linkBody $
+# Style
+linkBody s G linkBody tyle="A
+linkBody s G linkBody tyle="A
+linkBody t t linkBody $
+linkBody y y linkBody $
+linkBody l l linkBody $
+linkBody e e linkBody $
+# Transition: linkBody --> body
+linkBody > > body $
+# ========================= State: scriptBody =========================
+scriptBody < < scriptBody $
+scriptBody s s scriptBody $
+scriptBody c c scriptBody $
+scriptBody r r scriptBody $
+scriptBody i i scriptBody $
+scriptBody p p scriptBody $
+scriptBody t t scriptBody $
+# PDA Logic: Optional Attributes
+scriptBody W > scriptBody G>
+# Src
+scriptBody s G scriptBody rc="A
+scriptBody s G scriptBody rc="A
+scriptBody r r scriptBody $
+scriptBody c c scriptBody $
+scriptBody = = scriptBody $
+scriptBody " " scriptBody $
+scriptBody " A scriptBody $
+scriptBody " A scriptBody $
+scriptBody % A scriptBody A
+# PDA Logic: Global Attributes
+# ID
+scriptBody i G scriptBody d="A
+scriptBody d d scriptBody $
+scriptBody = = scriptBody $
+scriptBody " " scriptBody $
+scriptBody " A scriptBody $
+scriptBody % A scriptBody A
+# Class
+scriptBody c G scriptBody lass="A
+scriptBody c G scriptBody lass="A
+scriptBody l l scriptBody $
+scriptBody a a scriptBody $
+scriptBody s s scriptBody $
+# Style
+scriptBody s G scriptBody tyle="A
+scriptBody s G scriptBody tyle="A
+scriptBody t t scriptBody $
+scriptBody y y scriptBody $
+scriptBody l l scriptBody $
+scriptBody e e scriptBody $
+# Logic: <em>
+scriptBody e / scriptBody m></em></
+scriptBody m m scriptBody $
+# Logic: <b>
+scriptBody b / scriptBody ></b></
+# Logic: <abbr>
+scriptBody a / scriptBody bbr></abbr></
+scriptBody b b scriptBody $
+scriptBody r r scriptBody $
+# Logic: <strong>
+scriptBody s / scriptBody $
+scriptBody t t scriptBody $
+scriptBody r i scriptBody ong></strong></ti
+scriptBody o o scriptBody $
+scriptBody n n scriptBody $
+scriptBody g g scriptBody $
+# Logic: <small>
+scriptBody m t scriptBody all></small></t
+scriptBody a a scriptBody $
+scriptBody l l scriptBody $
+# Handling: Comment
+scriptBody ! / scriptBody --CMB</
+scriptBody - - scriptBody $
+scriptBody - C scriptBody $
+scriptBody - M scriptBody $
+scriptBody % C scriptBody C
+scriptBody > B scriptBody $
+# Handling: Reset Comment
+scriptBody % M scriptBody CM
+scriptBody % B scriptBody CMB
+# Transition: scriptBody --> /scriptBody
+scriptBody > > scriptBody $
+scriptBody / / /scriptTempBody $
+# ========================= State: /scriptTempBody =========================
+/scriptTempBody s s /scriptTempBody $
+/scriptTempBody c c /scriptBody $
+/scriptTempBody % % scriptBody $
+# ========================= State: /scriptBody =========================
+/scriptBody < < /scriptBody $
+/scriptBody / / /scriptBody $
+/scriptBody s s /scriptBody $
+/scriptBody c c /scriptBody $
+/scriptBody r r /scriptBody $
+/scriptBody i i /scriptBody $
+/scriptBody p p /scriptBody $
+/scriptBody t t /scriptBody $
+# Transition: /scriptBody --> body
+/scriptBody > > body $
 # ========================= State: /body =========================
-/body < < /body $
-/body / / /body $
 /body b b /body $
 /body o o /body $
 /body d d /body $
 /body y y /body $
-/body > > /html $
+# Handling: Comment
+/body ! / /body --CMB</
+/body - - /body $
+/body - C /body $
+/body - M /body $
+/body % C /body C
+/body > B /body $
+# Handling: Reset Comment
+/body % M /body CM
+/body % B /body CMB
+# Transition: /body --> /html
+/body > > /body $
+/body < < /body $
+/body / / /html $
 # ========================= State: /html =========================
-/html < < /html $
 /html / / /html $
 /html h h /html $
 /html t t /html $
 /html m m /html $
 /html l l /html $
 /html > > /html $
+# Handling: Comment
+/html < Z /html !--CMBZ
+/html ! ! /html $
+/html - - /html $
+/html - C /html $
+/html - M /html $
+/html % C /html C
+/html > B /html $
+# Handling: Reset Comment
+/html % M /html CM
+/html % B /html CMB

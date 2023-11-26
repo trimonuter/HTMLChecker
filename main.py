@@ -1,20 +1,19 @@
 import Parser
 from PDA import PDA
-from yaml import dump
 
 P: PDA = Parser.FileToPDA('PDA.txt')
-# print(dump(P.transitions['html']['h']))
-# print(P.transitions['html']['h'])
-
-# inp = input("Type string: ")
-htmlfile = 'tes.html'
+htmlfile = 'tesAllKomentar.html'
+# htmlfile = 'debug.html'
 with open(htmlfile, 'r') as file:
     inp = file.read()
     print(f'Reading {htmlfile}...')
     print(f'Input:\n{inp}')
 acc: bool = P.processInput(inp)
 
+print('\n------------------------------------------------')
 if acc:
-    print("String accepted")
+    print("Accepted!")
 else:
-    print("String rejected")
+    print("Rejected: Syntax Error")
+    P.printError()
+print('------------------------------------------------')
